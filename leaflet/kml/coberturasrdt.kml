@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Folder>
+	<name>Sites SRDT</name>
+	<open>1</open>
+	<Document>
+		<name>Cuiaba</name>
+		<open>1</open>
+		<StyleMap id="msn_open-diamond">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sn_open-diamond">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Style id="sh_open-diamond">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Cobertura SITE 04_9 BCOM.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-14.749441</north>
+				<south>-16.312775</south>
+				<east>-55.293196</east>
+				<west>-57.21764</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Cuiabá</name>
+			<LookAt>
+				<longitude>-56.064833</longitude>
+				<latitude>-15.56</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond</styleUrl>
+			<Point>
+				<coordinates>-56.064833,-15.56,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Nioaque</name>
+		<open>1</open>
+		<Style id="sn_open-diamond0">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond0">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond0</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond0</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sh_open-diamond0">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Nioque 01_0.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-20.1563</north>
+				<south>-22.429078</south>
+				<east>-55.056039</east>
+				<west>-56.64965</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Dourados</name>
+			<LookAt>
+				<longitude>-54.841583</longitude>
+				<latitude>-22.211973</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond0</styleUrl>
+			<Point>
+				<coordinates>-54.841583,-22.211973,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Rio Brilha</name>
+			<LookAt>
+				<longitude>-54.538222</longitude>
+				<latitude>-21.847527</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond0</styleUrl>
+			<Point>
+				<coordinates>-54.538222,-21.847527,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Nioaque</name>
+			<LookAt>
+				<longitude>-55.995945</longitude>
+				<latitude>-21.306084</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond0</styleUrl>
+			<Point>
+				<coordinates>-55.995945,-21.306084,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Morro Santa Cruz</name>
+		<open>1</open>
+		<Style id="sn_open-diamond00">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond00">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond00</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond00</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sh_open-diamond00">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Morro Santa Cruz - Mineradora Vale_0.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-17.651492</north>
+				<south>-21.216492</south>
+				<east>-55.660773</east>
+				<west>-59.601884</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Morro Santa Cruz</name>
+			<LookAt>
+				<longitude>-57.592361</longitude>
+				<latitude>-19.201612</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond00</styleUrl>
+			<Point>
+				<coordinates>-57.59236099999999,-19.201612,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Morro Margarida</name>
+		<open>1</open>
+		<StyleMap id="msn_open-diamond2">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond2</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond2</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sn_open-diamond2">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Style id="sh_open-diamond2">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Caracol02_1_0.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-21.00383</north>
+				<south>-22.764386</south>
+				<east>-55.69747</east>
+				<west>-57.811359</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Morro Margarida</name>
+			<LookAt>
+				<longitude>-56.841083</longitude>
+				<latitude>-21.971943</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond2</styleUrl>
+			<Point>
+				<coordinates>-56.841083,-21.971943,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>SITE 02 - TVE - CG</name>
+		<open>1</open>
+		<StyleMap id="msn_open-diamond000">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond000</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond000</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sh_open-diamond000">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Style id="sn_open-diamond000">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Cobertura SITE 02_9 B COM_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-20.0488</north>
+				<south>-21.179911</south>
+				<east>-54.212333</east>
+				<west>-55.650944</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>SITE 01</name>
+			<LookAt>
+				<longitude>-54.639889</longitude>
+				<latitude>-20.464001</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond000</styleUrl>
+			<Point>
+				<coordinates>-54.63988899999999,-20.464001,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>SITE 02</name>
+			<LookAt>
+				<longitude>-54.555528</longitude>
+				<latitude>-20.440944</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond000</styleUrl>
+			<Point>
+				<coordinates>-54.555528,-20.440944,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Amambai</name>
+		<open>1</open>
+		<Style id="sn_open-diamond0000">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond0000">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond0000</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond0000</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sh_open-diamond0000">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Amabai 03_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-22.430214</north>
+				<south>-23.841047</south>
+				<east>-54.337095</east>
+				<west>-56.052928</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Amambai</name>
+			<LookAt>
+				<longitude>-55.230611</longitude>
+				<latitude>-23.107555</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond0000</styleUrl>
+			<Point>
+				<coordinates>-55.23061100000001,-23.107555,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Antonio Joao</name>
+		<open>1</open>
+		<Style id="sn_open-diamond00000">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Style id="sh_open-diamond00000">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond00000">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond00000</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond00000</styleUrl>
+			</Pair>
+		</StyleMap>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Antônio João 02_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-21.02957</north>
+				<south>-23.137904</south>
+				<east>-55.34189</east>
+				<west>-57.241057</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Antônio Jo</name>
+			<LookAt>
+				<longitude>-55.957945</longitude>
+				<latitude>-22.189806</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond00000</styleUrl>
+			<Point>
+				<coordinates>-55.957945,-22.189806,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Corumba</name>
+		<open>1</open>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Corumbá 02_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-17.935282</north>
+				<south>-19.270004</south>
+				<east>-56.938063</east>
+				<west>-58.574174</west>
+			</LatLonBox>
+		</GroundOverlay>
+	</Document>
+	<Document>
+		<name>Dourados</name>
+		<open>1</open>
+		<StyleMap id="msn_open-diamond20">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond20</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond20</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sh_open-diamond20">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Style id="sn_open-diamond20">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Cobertura SITE 03_9 B COM_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-21.061313</north>
+				<south>-22.867425</south>
+				<east>-53.796334</east>
+				<west>-55.925223</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>SITE 03</name>
+			<LookAt>
+				<longitude>-54.842194</longitude>
+				<latitude>-22.211222</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond20</styleUrl>
+			<Point>
+				<coordinates>-54.84219400000001,-22.211222,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>PP Capei</name>
+		<open>1</open>
+		<Style id="sh_open-diamond3">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond3">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond3</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond3</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sn_open-diamond3">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Capey_Ponta Pora 02_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-21.638217</north>
+				<south>-23.235717</south>
+				<east>-54.328245</east>
+				<west>-55.953245</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Ponta Porã</name>
+			<LookAt>
+				<longitude>-55.385111</longitude>
+				<latitude>-22.453861</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond3</styleUrl>
+			<Point>
+				<coordinates>-55.385111,-22.453861,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Porto Murtinho</name>
+		<open>1</open>
+		<Style id="sh_open-diamond4">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond4">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond4</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond4</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id="sn_open-diamond4">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>Porto Murtinho 01_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-20.630592</north>
+				<south>-22.508092</south>
+				<east>-56.142894</east>
+				<west>-58.512894</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Ladário</name>
+			<LookAt>
+				<longitude>-57.260556</longitude>
+				<latitude>-19.000499</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond4</styleUrl>
+			<Point>
+				<coordinates>-57.260556,-19.000499,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Porto M</name>
+			<LookAt>
+				<longitude>-57.260556</longitude>
+				<latitude>-21.62514</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond4</styleUrl>
+			<Point>
+				<coordinates>-57.260556,-21.62514,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+	<Document>
+		<name>Tacuru</name>
+		<open>1</open>
+		<Style id="sn_open-diamond5">
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<Style id="sh_open-diamond5">
+			<IconStyle>
+				<scale>1.4</scale>
+				<Icon>
+					<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+		<StyleMap id="msn_open-diamond5">
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#sn_open-diamond5</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#sh_open-diamond5</styleUrl>
+			</Pair>
+		</StyleMap>
+		<GroundOverlay>
+			<name>RF Analysis</name>
+			<color>6effffff</color>
+			<Icon>
+				<href>http://10.254.22.75/extras/savismapo/leaflet/kml/Tacuru 01_3.png</href>
+				<viewBoundScale>0.9</viewBoundScale>
+			</Icon>
+			<LatLonBox>
+				<north>-22.57242</north>
+				<south>-24.18242</south>
+				<east>-54.203958</east>
+				<west>-55.747291</west>
+			</LatLonBox>
+		</GroundOverlay>
+		<Placemark>
+			<name>Antônio J</name>
+			<LookAt>
+				<longitude>-55.966639</longitude>
+				<latitude>-22.189805</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond5</styleUrl>
+			<Point>
+				<coordinates>-55.966639,-22.189805,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Tacuru</name>
+			<LookAt>
+				<longitude>-54.961861</longitude>
+				<latitude>-23.465416</latitude>
+				<altitude>0</altitude>
+				<heading>0</heading>
+				<tilt>0</tilt>
+				<range>500</range>
+				<altitudeMode>relativeToGround</altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond5</styleUrl>
+			<Point>
+				<coordinates>-54.96186099999999,-23.465416,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+</Folder>
+</kml>
