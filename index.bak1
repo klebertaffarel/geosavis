@@ -232,7 +232,7 @@ if ($DEBUG) echo "</pre>";
 
 
 		var map = L.map('map', {
-			center: [-23.10,-55.40],
+			center: [-20.95,-55.50],
 			zoom: 9,
 			layers: [city, sisfron]
 		});
@@ -255,22 +255,15 @@ if ($DEBUG) echo "</pre>";
 		addMarkersToMap(map);        
 		addPolylineToMap(map);
 
-		//Para recarregar automaticamente
-		setTimeout(function(){
-			map.setView([-20.95,-55.40]);
-			console.log("setInterval de 4 segundo parte norte");
-		},10000);
+//		Para recarregar automaticamente
+		setInterval(function(){
+			map.setView([-22.95,-54.96]);
+			setTimeout(function(){
+				location.reload();
+				map.setView([-20.95,-55.50]);
+			}, 24000);
+		}, 24000);
 
-
-		setTimeout(function(){
-			map.setView([-22.00,-55.40],8);		
-//                        map.setZoom(8);
-                        console.log("setTimeOut Centro");
-                }, 20000);
-
-                setTimeout(function(){
-                        location.reload();
-                }, 60000);
 
 
       }
@@ -280,7 +273,7 @@ if ($DEBUG) echo "</pre>";
 
 
 <body onLoad="javascript:init();">
-   <div id="map" style="height: 970px"></div>
+   <div id="map" style="height: 850px"></div>
    
 </body>                                                                                                                          
 </html>
