@@ -1,0 +1,76 @@
+<html>
+<head>
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+
+<input type="text" placeholder="Type something here" />
+
+<div id="checkbox-container">
+  <div>
+    <label for="option1">Option 1</label>
+    <input type="checkbox" id="option2222">
+  </div>
+  <div>
+    <label for="option2">Option 2</label>
+    <input type="checkbox" id="option2">
+  </div>
+  <div>
+    <label for="option3">Option 3</label>
+    <input type="checkbox" id="option3">
+  </div>
+  <button>Check All</button>
+</div>
+
+<script language="javascript">
+
+var formValues = JSON.parse(localStorage.getItem('formValues')) || {};
+var $checkboxes = $("#checkbox-container :checkbox");
+var $button = $("#checkbox-container button");
+
+function allChecked(){
+  return $checkboxes.length === $checkboxes.filter(":checked").length;
+}
+function updateButtonStatus(){
+  $button.text(allChecked()? "Uncheck all" : "Check all");
+}
+function handleButtonClick(){
+  $checkboxes.prop("checked", allChecked()? false : true)
+}
+function updateStorage(){
+  $checkboxes.each(function(){
+    formValues[this.id] = this.checked;
+  });
+
+  formValues["buttonText"] = $button.text();
+  localStorage.setItem("formValues", JSON.stringify(formValues));
+}
+$button.on("click", function() {
+  handleButtonClick();
+  updateButtonStatus();
+  updateStorage();
+});
+$checkboxes.on("change", function(){
+  updateButtonStatus();
+  updateStorage();
+});
+// On page load
+$.each(formValues, function(key, value) {
+  $("#" + key).prop('checked', value);
+});
+
+$button.text(formValues["buttonText"]);
+
+</script>
+
+
+   
+</body>                                                                                                                          
+</html>

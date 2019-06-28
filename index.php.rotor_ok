@@ -3,8 +3,8 @@
 //echo dirname(__FILE__).'/includes/autoload.php';
 require_once(dirname(__FILE__).'/includes/autoload.php');
 //echo "<br>autoload incluido";
-error_reporting(1);
-ini_set('display_errors', E_ALL);
+error_reporting(0);
+//ini_set('display_errors', E_ALL);
 
 $DEBUG = false;
 
@@ -69,8 +69,7 @@ if ($DEBUG) echo "</pre>";
 
    
 <script language="javascript">
-	
-	//imagens utilizadas nos mapas
+
 	function addMarkersToMap(map) {
 	var myIcon = L.icon({
 		iconUrl: 'images/torre.png',
@@ -79,14 +78,6 @@ if ($DEBUG) echo "</pre>";
 		labelAnchor: [6, 0] // as I want the label to appear 2px past the icon (10 + 2 - 6)
 	});
 
-	var customOptions =
-		{
-			'maxWidth': '500',
-			'className' : 'custom'
-	}
-
-
-
 	<?php
 	//---GROUP HOSTS----------------------------------------------------------------
                 $i = 0;
@@ -94,60 +85,41 @@ if ($DEBUG) echo "</pre>";
                 while ($i < count($hostGroups)){
                         //Salva a posicao para facilitar a criacao das linhas
                         $aux_grouphosts_by_selementid[$hostGroups[$i]['selementid']] = $hostGroups[$i];
+                //Recupera informacoes de Sub-mapas
+                echo "/*";
+                $mapaDetalhado = $svsZabLib->getSysmapByName($hostGroups[$i]['name']);
+//		$link_banda = $svsZabLib->getSysmapLinksBanda($hostGroups[$i]['groupid']);
 
-	                //Recupera informacoes de Sub-mapas
-        	        echo "/*";
-                	$mapaDetalhado = $svsZabLib->getSysmapByName($hostGroups[$i]['name']);
-	
-			$link_banda = $svsZabLib->getSysmapLinksBanda($hostGroups[$i]['groupid']);
-			$alarme_site = $svsZabLib->getAlarmeSite($hostGroups[$i]['groupid']);
+		if ($DEBUG) print_r($link_banda);
+		if ($DEBUG) print_r($link_banda[0]['banda']);
 
-	
-//			if ($DEBUG) print_r($link_banda);
-//			if ($DEBUG) print_r($link_banda[0]['banda']);
+                echo "*/";
+//		if (($link_banda[0]['banda']!='')){
+//			$banda="<span class=\"leaflet-label-link\"> Uso Banda ".$link_banda[0]['name'].":</span><span class=\"leaflet-label-link\">.$link_banda[0]['banda'];
+//			$banda="<span style=\"color:blue;\"> - Banda Util: ".$link_banda[0]['banda']."</span>";
+//			$banda="<span class=\"leaflet-label-link\">".$link_banda[0]['name']." :<span style=\"color:blue;\"> ".$link_banda[0]['banda']." Mbps</span>";
+		
+//		} else {
+//			$banda='';
+//		};
 
-			if ($DEBUG) print_r($alarme_site);
-			if ($DEBUG) print_r($alarme_site[0]['host']);
-			if ($DEBUG) print_r($alarme_site[1]['host']);
-
-
-			//pegar valor de banda se houver
-	                echo "*/";
-			if (($link_banda[0]['banda']!='')){
-				$banda="<span class=\"leaflet-label-link\">".$link_banda[0]['name']." :<span style=\"color:blue;\"> ".$link_banda[0]['banda']." Mbps</span>";				
-			} else {
-				$banda="";
-			};
-
-			//pegar alarme se houver
-                        if (($alarme_site[0]['host']!='')){
-                                $alarme="<span class=\"leaflet-label-link\">Alarme :<span style=\"color:red;\"> ".$alarme_site[0]['description']."</span>";
-                        } else {
-                                $alarme="";
-                        };
-
-
-
-
-		?>
-
-			var customPopup = "<a target='_blank' href='/zabbix/zabbix.php?action=map.view&sysmapid=<?=$mapaDetalhado['sysmapid']?>'>" +
-                        "<?=$hostGroups[$i]['label']?> - Infraestrutura" +
-                        "</a>" ;
+                ?>
+			
 
 			var marker<?=$hostGroups[$i]['groupid']?> = new L.LatLng(<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>);
-			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$banda?>', { noHide:true}).bindPopup(customPopup,customOptions).addTo(map);
-			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$alarme?>', { noHide:true}).bindPopup(customPopup,customOptions).addTo(map);
+			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$banda?>', { noHide: true}).addTo(map);
+
 
                <?php
-        		$i++;
-	   	}
-	                print_r($aux_grouphosts_byid);
+                $i++;
+                }
+                   print_r($aux_grouphosts_byid);
                 ?>
 
         }
 
 	function addPolylineToMap(map) {
+
 		<?php
 		$i=0;
 			while ($i < count($ar_links)){
@@ -172,36 +144,6 @@ if ($DEBUG) echo "</pre>";
 			// zoom the map to the polyline
 			//map.fitBounds(polyline.getBounds());
 	}
-
-	//Função que mostra a Longitude e Latitude no cursor do Mouse
-	function cursorLonLat() {
-		L.CursorHandler = L.Handler.extend({
-			addHooks: function () {
-				this._popup = new L.Popup();
-				this._map.on('mouseover', this._open, this);
-				this._map.on('mousemove', this._update, this);
-				this._map.on('mouseout', this._close, this);
-			},
-			removeHooks: function () {
-				this._map.off('mouseover', this._open, this);
-				this._map.off('mousemove', this._update, this);
-				this._map.off('mouseout', this._close, this);
-			},
-			_open: function (e) {
-				this._update(e);
-				this._popup.openOn(this._map);
-			},
-			_close: function () {
-				this._map.closePopup(this._popup);
-			},
-			_update: function (e) {
-				this._popup.setLatLng(e.latlng)
-				.setContent(e.latlng.toString());
-			}
-    		});
-		L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
-	}
-
 
 	function init() {
 
@@ -286,35 +228,13 @@ if ($DEBUG) echo "</pre>";
 			'Sisfron Fase 1': sisfron
 		};
 
-		//chamar função do cursor do mouse com Lon/Lat
-		if (document.getElementById('option2').checked)
-			cursorLonLat();
-
+		
 		var map = L.map('map', {
 			center: [-22.00,-55.40],
 			zoom: 8,
-			cursor: true,
 			layers: [city, sisfron]
 		});
 
-
-		//Adicionar imagem de fundo no mapa
-		L.Control.Watermark = L.Control.extend({
-			onAdd: function(map) {
-				var img = L.DomUtil.create('img');
-				img.src = 'images/sisfron_transp_mapa.png';
-				img.style.width = '380px';
-				return img;
-			},
-		
-			onRemove: function(map) {
-				// Nothing to do here
-			}
-		});
-		L.control.watermark = function(opts) {
-			return new L.Control.Watermark(opts);
-		}
-		L.control.watermark({ position: 'bottomright' }).addTo(map);
 
 
 		// Add our preferred default layer choice directly to the map
@@ -326,12 +246,13 @@ if ($DEBUG) echo "</pre>";
 		L.control.scale().addTo(map);
 	
 	        map.attributionControl.setPrefix('Powered by Leaflet'); // Don't show the 'Powered by Leaflet' text. Attribution overload
-		//map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text.
+
+	
+		map.attributionControl.setPrefix(''); // Don't show the 'Powered by Leaflet' text.
 
 		addMarkersToMap(map);        
 		addPolylineToMap(map);
 
-		//Rotina para setar tempos de exibicao de cada parte do mapa,sendo que o mapa pode rotacionar ou nao dependendo da opcao marcada no checkbox
 		if (document.getElementById('option1').checked)
 		{
 			setTimeout(function(){
@@ -363,13 +284,13 @@ if ($DEBUG) echo "</pre>";
 <body onLoad="javascript:init();">
 
    <div id="map" style="height: 940px"></div>
+
 	<table>
 		<tr>
 			<td class="pagina-principal-topo">
-				<div id="checkbox-container">
-					<div id="latitude"><input type="checkbox" id="option2"/><label class="labelcalcrota" for="txtAreaCobertura"> Cursor Lat/Lon </label></div>
-					<div id="checkbox-rotacionar"><input type="checkbox" id="option1"/><label class="labelcalcrota" for="txtAreaCobertura"> Rotacionar Mapa </label></div>
-				</div>
+				<div id="longitude">Long:  0.000000</div>
+				<div id="latitude">Lat:  0.000000</div>
+				<div id="checkbox-rotacionar"><input type="checkbox" id="option1"/><label class="labelcalcrota" for="txtAreaCobertura"> Rotacionar Mapa </label></div>
 			</td>
 		</tr>
 
@@ -380,7 +301,7 @@ if ($DEBUG) echo "</pre>";
 <script language="javascript">
 
 var formValues = JSON.parse(localStorage.getItem('formValues')) || {};
-var $checkboxes = $("#checkbox-container :checkbox");
+var $checkboxes = $("#checkbox-rotacionar :checkbox");
 var $button = $("#checkbox-container button");
 
 function allChecked(){

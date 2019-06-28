@@ -3,8 +3,8 @@
 //echo dirname(__FILE__).'/includes/autoload.php';
 require_once(dirname(__FILE__).'/includes/autoload.php');
 //echo "<br>autoload incluido";
-error_reporting(1);
-ini_set('display_errors', E_ALL);
+error_reporting(0);
+//ini_set('display_errors', E_ALL);
 
 $DEBUG = false;
 
@@ -79,14 +79,6 @@ if ($DEBUG) echo "</pre>";
 		labelAnchor: [6, 0] // as I want the label to appear 2px past the icon (10 + 2 - 6)
 	});
 
-	var customOptions =
-		{
-			'maxWidth': '500',
-			'className' : 'custom'
-	}
-
-
-
 	<?php
 	//---GROUP HOSTS----------------------------------------------------------------
                 $i = 0;
@@ -94,55 +86,31 @@ if ($DEBUG) echo "</pre>";
                 while ($i < count($hostGroups)){
                         //Salva a posicao para facilitar a criacao das linhas
                         $aux_grouphosts_by_selementid[$hostGroups[$i]['selementid']] = $hostGroups[$i];
+                //Recupera informacoes de Sub-mapas
+                echo "/*";
+                $mapaDetalhado = $svsZabLib->getSysmapByName($hostGroups[$i]['name']);
+		$link_banda = $svsZabLib->getSysmapLinksBanda($hostGroups[$i]['groupid']);
 
-	                //Recupera informacoes de Sub-mapas
-        	        echo "/*";
-                	$mapaDetalhado = $svsZabLib->getSysmapByName($hostGroups[$i]['name']);
+		if ($DEBUG) print_r($link_banda);
+		if ($DEBUG) print_r($link_banda[0]['banda']);
+
+                echo "*/";
+		if (($link_banda[0]['banda']!='')){
+			$banda="<span class=\"leaflet-label-link\">".$link_banda[0]['name']." :<span style=\"color:blue;\"> ".$link_banda[0]['banda']." Mbps</span>";
 	
-			$link_banda = $svsZabLib->getSysmapLinksBanda($hostGroups[$i]['groupid']);
-			$alarme_site = $svsZabLib->getAlarmeSite($hostGroups[$i]['groupid']);
+		} else {
+			$banda='';
+		};
+	?>
 
-	
-//			if ($DEBUG) print_r($link_banda);
-//			if ($DEBUG) print_r($link_banda[0]['banda']);
+		var marker<?=$hostGroups[$i]['groupid']?> = new L.LatLng(<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>);
+		L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$banda?>', { noHide: true}).addTo(map);
 
-			if ($DEBUG) print_r($alarme_site);
-			if ($DEBUG) print_r($alarme_site[0]['host']);
-			if ($DEBUG) print_r($alarme_site[1]['host']);
-
-
-			//pegar valor de banda se houver
-	                echo "*/";
-			if (($link_banda[0]['banda']!='')){
-				$banda="<span class=\"leaflet-label-link\">".$link_banda[0]['name']." :<span style=\"color:blue;\"> ".$link_banda[0]['banda']." Mbps</span>";				
-			} else {
-				$banda="";
-			};
-
-			//pegar alarme se houver
-                        if (($alarme_site[0]['host']!='')){
-                                $alarme="<span class=\"leaflet-label-link\">Alarme :<span style=\"color:red;\"> ".$alarme_site[0]['description']."</span>";
-                        } else {
-                                $alarme="";
-                        };
-
-
-
-
-		?>
-
-			var customPopup = "<a target='_blank' href='/zabbix/zabbix.php?action=map.view&sysmapid=<?=$mapaDetalhado['sysmapid']?>'>" +
-                        "<?=$hostGroups[$i]['label']?> - Infraestrutura" +
-                        "</a>" ;
-
-			var marker<?=$hostGroups[$i]['groupid']?> = new L.LatLng(<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>);
-			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$banda?>', { noHide:true}).bindPopup(customPopup,customOptions).addTo(map);
-			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$alarme?>', { noHide:true}).bindPopup(customPopup,customOptions).addTo(map);
 
                <?php
-        		$i++;
-	   	}
-	                print_r($aux_grouphosts_byid);
+        	        $i++;
+	                }
+	                   print_r($aux_grouphosts_byid);
                 ?>
 
         }
