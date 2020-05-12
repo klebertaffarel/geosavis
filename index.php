@@ -43,7 +43,6 @@ if ($DEBUG) echo "</pre>";
 	<script src="leaflet/Label.js"></script>
 	<script src="leaflet/BaseMarkerMethods.js"></script>
 	<script src="leaflet/Marker.Label.js"></script>
-	<script src="leaflet/CircleMarker.Label.js"></script>
 	<script src="leaflet/Path.Label.js"></script>
 	<script src="leaflet/Map.Label.js"></script>
 	<script src="leaflet/FeatureGroup.Label.js"></script>
@@ -114,18 +113,22 @@ if ($DEBUG) echo "</pre>";
 			//pegar valor de banda se houver
 	                echo "*/";
 			if (($link_banda[0]['banda']!='')){
-				$banda="<span class=\"leaflet-label-link\">".$link_banda[0]['name']." :<span style=\"color:blue;\"> ".$link_banda[0]['banda']." Mbps</span>";				
+				$banda="<span class=\"leaflet-label-link\">".$link_banda[0]['name']." :<span style=\"color:blue;\"> ".$link_banda[0]['banda']." Mbps</span>";
 			} else {
 				$banda="";
 			};
 
-			//pegar alarme se houver
+			 //pegar alarme se houver
                         if (($alarme_site[0]['host']!='')){
-                                $alarme="<span class=\"leaflet-label-link\">Alarme :<span style=\"color:red;\"> ".$alarme_site[0]['description']."</span>";
+                                $alarme="<span style=\"color:red;\">".$alarme_site[0]['description']."</span>";
+                                ?>
+				L.circle([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], 9500,
+                                		{color: 'red', fillColor: '#f03', fillOpacity: 0.5}).bindPopup('<?=$alarme?>').addTo(map);
+
+                        <?php
                         } else {
                                 $alarme="";
                         };
-
 
 
 
@@ -134,11 +137,9 @@ if ($DEBUG) echo "</pre>";
 			var customPopup = "<a target='_blank' href='/zabbix/zabbix.php?action=map.view&sysmapid=<?=$mapaDetalhado['sysmapid']?>'>" +
                         "<?=$hostGroups[$i]['label']?> - Infraestrutura" +
                         "</a>" ;
-
-			var marker<?=$hostGroups[$i]['groupid']?> = new L.LatLng(<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>);
+//			var marker<?=$hostGroups[$i]['groupid']?> = new L.LatLng(<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>);
 			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$banda?>', { noHide:true}).bindPopup(customPopup,customOptions).addTo(map);
-			L.marker([<?=$hostGroups[$i]['lat']?>,<?=$hostGroups[$i]['lon']?>], {icon: myIcon}).bindLabel('<?=$hostGroups[$i]['label'].$alarme?>', { noHide:true}).bindPopup(customPopup,customOptions).addTo(map);
-
+			
                <?php
         		$i++;
 	   	}
@@ -221,33 +222,37 @@ if ($DEBUG) echo "</pre>";
 	          })
 
 		var mapbox = 
-			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3RhZmZhcmVsIiwiYSI6ImNqc2F2bnpwMDAzb3czeXBlZmNoeGkwbDIifQ.h4kqbBmu8ApJXfnBETZnbQ', {
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibm9jc2F2aXNjZ3IiLCJhIjoiY2szYWgwam9lMGFldDNucWxvZmYyMjhxZSJ9.r0NSBE9cUF6Wsz04v7DAAA', {
 			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 			maxZoom: 18,
 			id: 'mapbox.streets',
 			accessToken: 'pk.eyJ1Ijoia2xlYmVydGFmZmFyZWwiLCJhIjoiY2puMHFoeDNuNHNnNjNxbnl1d3A0MDlmaSJ9.FliRQ8BNbB5NGpgtH9lkpQ'
 		})
 		var mapout =
-                        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3RhZmZhcmVsIiwiYSI6ImNqc2F2bnpwMDAzb3czeXBlZmNoeGkwbDIifQ.h4kqbBmu8ApJXfnBETZnbQ', {
+                        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoibm9jc2F2aXNjZ3IiLCJhIjoiY2szYWgwam9lMGFldDNucWxvZmYyMjhxZSJ9.r0NSBE9cUF6Wsz04v7DAAA', {
                         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                         maxZoom: 18,
                         id: 'mapbox.outdoors',
                         accessToken: 'pk.eyJ1Ijoia2xlYmVydGFmZmFyZWwiLCJhIjoiY2puMHFoeDNuNHNnNjNxbnl1d3A0MDlmaSJ9.FliRQ8BNbB5NGpgtH9lkpQ'
                 })
 
-
-		var wikimedia =
-			L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors. Base map: <a href="https://www.mediawiki.org/wiki/Maps#Production_maps_cluster">wikimedia maps</a>',
-			maxZoom: 18
-		})
-
-		var OpenMapSurfer_Roads = 
-			L.tileLayer('https://korona.geog.uni-heidelberg.de/tiles/roads/x={x}&y={y}&z={z}', {
+		var OpenStreetMap_Detail= L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 			maxZoom: 20,
-			attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			attribution: '&copy; Openstreetmap | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		});
+
+		var thunderforest =  L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=3eb76fa6db204028a691ab37a0275a62', {
+			maxZoom: 18
+		});
+
+		var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> | Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		});
 		
+		var darkmatter = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',{ attribution: '© OpenStreetMap contributors, © CartoDB'});
+
+		var midnigth = L.tileLayer('https://cartocdn_{s}.global.ssl.fastly.net/base-midnight/{z}/{x}/{y}.png',{ attribution: '© OpenStreetMap contributors, © CartoDB'});
 
 
 		// Initialise overlay layers
@@ -261,18 +266,37 @@ if ($DEBUG) echo "</pre>";
 			maxZoom: 18
 		})
 
+		var TonerLines = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 20,
+			ext: 'png'
+		});
+
+		var TonerLabels = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 20,
+			ext: 'png'
+		});
+
 
 		var srdt = new L.KML("leaflet/kml/coberturasrdt.kml", {async: true});
 		var sisfron = new L.KML("leaflet/kml/sisfronfase1.kml", {async: true});
+		var proxys = new L.KML("leaflet/kml/proxyinfovia.kml", {async: true});
 
 		// Name the layers
 		var baseMaps = {
 	            'OpenStreetMap standard': osmStandard,
 		    'Mapbox': mapbox,
 		    'Mapbox Out': mapout,
-        	    'Wikimedia maps': wikimedia,
-	            'Open Roads': OpenMapSurfer_Roads
-
+        	    'OpenStreetMapDetail': OpenStreetMap_Detail,
+		    'Estradas': OpenMapSurfer_Roads,
+		    'Floresta': thunderforest,
+		    'DarkMatter': darkmatter,
+		    'MidNigth': midnigth	    	
 	        };
 
 		var overlayMaps = {
@@ -283,18 +307,22 @@ if ($DEBUG) echo "</pre>";
 			'Temperatura': temperature,
 			'Clima': city,
 			'SRDT': srdt,
-			'Sisfron Fase 1': sisfron
+			'Sisfron Fase 1': sisfron,
+			'Zabbix Proxys' : proxys,
+			'Divisas':TonerLines,
+			'Labels':TonerLabels
+
 		};
 
 		//chamar função do cursor do mouse com Lon/Lat
-		if (document.getElementById('option2').checked)
+		if (document.getElementById('option3').checked)
 			cursorLonLat();
 
 		var map = L.map('map', {
 			center: [-22.00,-55.40],
 			zoom: 8,
 			cursor: true,
-			layers: [city, sisfron]
+			layers: [city,sisfron]
 		});
 
 
@@ -332,28 +360,32 @@ if ($DEBUG) echo "</pre>";
 		addPolylineToMap(map);
 
 		//Rotina para setar tempos de exibicao de cada parte do mapa,sendo que o mapa pode rotacionar ou nao dependendo da opcao marcada no checkbox
-		if (document.getElementById('option1').checked)
+		if (!document.getElementById('option2').checked)
 		{
+			if (document.getElementById('option1').checked)
+			{
+				setTimeout(function(){
+					map.setView([-23.10,-55.40],9);
+					console.log("setInterval de 4 segundo parte norte");
+				},10000);
+				setTimeout(function(){
+//					map.setView([-20.95,-55.40]);
+					map.setView([-19.80,-55.10]);
+					console.log("setTimeOut Centro");
+				}, 20000);
+			}
+
+			setInterval(function(){
+				map.setView([-21.20,-55.40],9);
+				setTimeout(function(){
+					map.setView([-22.00,-55.40],8);
+				}, 2000);
+			}, 30000);
+	
 			setTimeout(function(){
-				map.setView([-23.10,-55.40],9);
-				console.log("setInterval de 4 segundo parte norte");
-			},10000);
-			setTimeout(function(){
-				map.setView([-20.95,-55.40]);
-				console.log("setTimeOut Centro");
-			}, 20000);
+				window.location.reload();
+			}, 60000);
 		}
-
-		setInterval(function(){
-			map.setView([-21.20,-55.40],9);
-			setTimeout(function(){
-				map.setView([-22.00,-55.40],8);
-			}, 2000);
-		}, 30000);
-
-		setTimeout(function(){
-			window.location.reload();
-		}, 60000);
 	}
 
    </script>
@@ -362,13 +394,14 @@ if ($DEBUG) echo "</pre>";
 
 <body onLoad="javascript:init();">
 
-   <div id="map" style="height: 940px"></div>
+   <div id="map" style="height: 890px"></div>
 	<table>
 		<tr>
 			<td class="pagina-principal-topo">
-				<div id="checkbox-container">
-					<div id="latitude"><input type="checkbox" id="option2"/><label class="labelcalcrota" for="txtAreaCobertura"> Cursor Lat/Lon </label></div>
+				<div id="checkbox-container">				
 					<div id="checkbox-rotacionar"><input type="checkbox" id="option1"/><label class="labelcalcrota" for="txtAreaCobertura"> Rotacionar Mapa </label></div>
+					<div id="congelar"><input type="checkbox" id="option2"/><label class="labelcalcrota" for="txtAreaCobertura"> Congelar Mapa </label></div>
+					<div id="latitude"><input type="checkbox" id="option3"/><label class="labelcalcrota" for="txtAreaCobertura"> Cursor Lat/Lon </label></div>			
 				</div>
 			</td>
 		</tr>
